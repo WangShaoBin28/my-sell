@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.app.dao.ProductInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.app.entity.ProductInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="category_id" property="categoryId" jdbcType="BIGINT" />
+    <result column="unit" property="unit" jdbcType="VARCHAR" />
+    <result column="unit_price" property="unitPrice" jdbcType="DECIMAL" />
+    <result column="detailed_description" property="detailedDescription" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="inventory_num" property="inventoryNum" jdbcType="INTEGER" />
+    <result column="created_gmt_at" property="createdGmtAt" jdbcType="TIMESTAMP" />
+    <result column="create_id" property="createId" jdbcType="BIGINT" />
+    <result column="updated_gmt_at" property="updatedGmtAt" jdbcType="TIMESTAMP" />
+    <result column="update_id" property="updateId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_name, category_id, unit, unit_price, detailed_description, image, inventory_num, 
+    created_gmt_at, create_id, updated_gmt_at, update_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from product_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.app.entity.ProductInfo" >
+    insert into product_info (id, product_name, category_id, 
+      unit, unit_price, detailed_description, 
+      image, inventory_num, created_gmt_at, 
+      create_id, updated_gmt_at, update_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{productName,jdbcType=VARCHAR}, #{categoryId,jdbcType=BIGINT}, 
+      #{unit,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, #{detailedDescription,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{inventoryNum,jdbcType=INTEGER}, #{createdGmtAt,jdbcType=TIMESTAMP}, 
+      #{createId,jdbcType=BIGINT}, #{updatedGmtAt,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.app.entity.ProductInfo" >
+    insert into product_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="unit != null" >
+        unit,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="detailedDescription != null" >
+        detailed_description,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="inventoryNum != null" >
+        inventory_num,
+      </if>
+      <if test="createdGmtAt != null" >
+        created_gmt_at,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="updatedGmtAt != null" >
+        updated_gmt_at,
+      </if>
+      <if test="updateId != null" >
+        update_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="detailedDescription != null" >
+        #{detailedDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryNum != null" >
+        #{inventoryNum,jdbcType=INTEGER},
+      </if>
+      <if test="createdGmtAt != null" >
+        #{createdGmtAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="updatedGmtAt != null" >
+        #{updatedGmtAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null" >
+        #{updateId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.entity.ProductInfo" >
+    update product_info
+    <set >
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=BIGINT},
+      </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="detailedDescription != null" >
+        detailed_description = #{detailedDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryNum != null" >
+        inventory_num = #{inventoryNum,jdbcType=INTEGER},
+      </if>
+      <if test="createdGmtAt != null" >
+        created_gmt_at = #{createdGmtAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="updatedGmtAt != null" >
+        updated_gmt_at = #{updatedGmtAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null" >
+        update_id = #{updateId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.app.entity.ProductInfo" >
+    update product_info
+    set product_name = #{productName,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=BIGINT},
+      unit = #{unit,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      detailed_description = #{detailedDescription,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      inventory_num = #{inventoryNum,jdbcType=INTEGER},
+      created_gmt_at = #{createdGmtAt,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=BIGINT},
+      updated_gmt_at = #{updatedGmtAt,jdbcType=TIMESTAMP},
+      update_id = #{updateId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
