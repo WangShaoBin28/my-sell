@@ -1,0 +1,42 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: my-sell
+  datasource:
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      driverClassName: com.mysql.jdbc.Driver
+      filters: stat,wall,log4j
+      initialSize: 5
+      maxActive: 20
+      maxPoolPreparedStatementPerConnectionSize: 20
+      maxWait: 60000
+      minEvictableIdleTimeMillis: 300000
+      minIdle: 5
+      poolPreparedStatements: true
+      testOnBorrow: false
+      testOnReturn: false
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://10.1.32.69:3306/my-sell?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: root
+      validationQuery: SELECT 1 FROM DUAL
+
+# MyBatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  config-location: classpath:config/mybatis-config.xml
+
+#pagehelper:
+#    helper-dialect: mysql
+#      #是否自动检测参数
+#    reasonable: false
+#    support-methods-arguments: true
+#    params: count=countSql
+
+logging:
+  level:
+   com.app: debug
+
