@@ -34,7 +34,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login() {
         //检查是否有登入，有登入直接跳转 TODO
-      //暂时把登入的ID放入cookie
+        //暂时把登入的ID放入cookie
 
         return "login/login";
     }
@@ -48,6 +48,17 @@ public class LoginController {
     @ResponseBody
     public ReturnInfo<UserInfo> checkLogin(@RequestBody UserInfoForm userInfoForm, HttpServletRequest request) {
         return loginService.checkLogin(userInfoForm, request);
+    }
+
+    /**
+     * @author wangshaobin
+     * @date 2018/10/24 19:41
+     * @description 退出
+     */
+    @GetMapping("/loginOut")
+    public String loginOut() {
+
+        return "redirect:/";
     }
 
 }

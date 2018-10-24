@@ -16,14 +16,14 @@
 				<div class="m-login-warp">
 					<form class="layui-form">
 						<div class="layui-form-item">
-							<input type="text" name="phoneNumber" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
+							<input type="text" name="phoneNumber" required lay-verify="phone" placeholder="用户名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
-							<input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+							<input type="password" name="password" required lay-verify="password" placeholder="密码" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
 							<div class="layui-inline">
-								<input type="text" name="verity" required lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
+								<input type="text" name="verity" required lay-verify="verity" placeholder="验证码" autocomplete="off" class="layui-input">
 							</div>
 							<div class="layui-inline">
 								<img class="verifyImg" onclick="this.src=this.src+'?c='+Math.random();" src="../../admin/images/login/yzm.jpg" />
@@ -50,21 +50,21 @@
 
                 //自定义验证规则
                 form.verify({
-                    title: function (value) {
-                        if (value.length < 5) {
-                            return '标题至少得5个字符啊';
+                    password: function (value) {
+                        if (value == '') {
+                            return '请输入密码！';
                         }
                     },
-                    password: [/(.+){6,12}$/, '密码必须6到12位'],
-                    verity: [/(.+){6}$/, '验证码必须是6位'],
+                    verity: function (value) {
+                        if (value == '') {
+                            return '请输入验证码！';
+                        }
+                    }
                 });
 
                 //监听提交
                 form.on('submit(login)', function (data) {
-
-                    // layer.alert('只想简单的提示');
-                    $("#message").text("正在登入！");
-                    //通过ajax请求处理登入
+                    $("#message").text("正在登陆！");
                     $.ajax({
                         url: "/checkLogin",
                         method: 'POST',
@@ -72,9 +72,11 @@
                         dataType: 'JSON',
                         contentType: "application/json",
                         success: function (res) {
-                            // console.log(res);
-                            $("#message").text(res.error);
-                            // window.location.href = '';
+                            if (res.status == true) {
+                                window.location.href = '/index';
+                            } else {
+                                $("#message").text(res.error);
+                            }
                         },
                         error: function (data) {
 

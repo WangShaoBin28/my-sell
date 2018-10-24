@@ -20,12 +20,22 @@ public class IndexController {
     @Autowired
     private WeChatProperties weChatProperties;
 
+    /**
+     * @author wangshaobin
+     * @date 2018/10/24 19:45
+     * @description 页面跳转不做任何操作
+     */
     @RequestMapping("/")
-    public String index(ModelMap modelMap) {
-
-        modelMap.addAttribute("appId", weChatProperties.getAppId());
-        modelMap.addAttribute("secret", weChatProperties.getSecret());
+    public String main() {
         return "redirect:/login";
+    }
+
+
+    @RequestMapping("/index")
+    public String index() {
+        // TODO 获取菜单 返回前台进行展示
+
+        return "/index/index";
     }
 
 
