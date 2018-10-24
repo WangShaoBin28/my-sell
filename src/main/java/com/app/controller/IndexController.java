@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Author wangshaobin
  * @Date 2018/10/24 10:58
  * @Version 1.0
- * @Description: index页面1
+ * @Description: index页面11
  **/
 @Controller
 public class IndexController {
