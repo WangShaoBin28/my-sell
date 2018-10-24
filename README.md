@@ -132,3 +132,10 @@ DELETE
 6.选择适当的表示结构
 json   xml<br>
 引用连接：https://www.cnblogs.com/wang-yaz/p/9237981.html
+
+<br>
+后续继续完善<br>
+菜单管理
+权限认证
+数据字典
+
