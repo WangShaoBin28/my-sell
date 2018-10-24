@@ -1,37 +1,53 @@
 server:
   port: 8080
-spring:
-  application:
-    name: my-sell
-  datasource:
-      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-      driverClassName: com.mysql.jdbc.Driver
-      filters: stat,wall,log4j
-      initialSize: 5
-      maxActive: 20
-      maxPoolPreparedStatementPerConnectionSize: 20
-      maxWait: 60000
-      minEvictableIdleTimeMillis: 300000
-      minIdle: 5
-      poolPreparedStatements: true
-      testOnBorrow: false
-      testOnReturn: false
-      testWhileIdle: true
-      timeBetweenEvictionRunsMillis: 60000
-      type: com.alibaba.druid.pool.DruidDataSource
-      url: jdbc:mysql://10.1.32.69:3306/my-sell?useUnicode=true&characterEncoding=utf-8
-      username: root
-      password: root
-      validationQuery: SELECT 1 FROM DUAL
 
-# MyBatis ÅäÖÃ
+spring:
+    application:
+      name: my-sell
+    http:
+      encoding:
+        force: true
+        charset: UTF-8
+    freemarker:
+      allow-request-override: false
+      cache: false
+      check-template-location: true
+      charset: UTF-8
+      content-type: text/html; charset=utf-8
+      expose-request-attributes: false
+      expose-session-attributes: false
+      expose-spring-macro-helpers: false
+      suffix: .ftl
+      template-loader-path: classpath:/templates
+    datasource:
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        driverClassName: com.mysql.jdbc.Driver
+        filters: stat,wall,log4j
+        initialSize: 5
+        maxActive: 20
+        maxPoolPreparedStatementPerConnectionSize: 20
+        maxWait: 60000
+        minEvictableIdleTimeMillis: 300000
+        minIdle: 5
+        poolPreparedStatements: true
+        testOnBorrow: false
+        testOnReturn: false
+        testWhileIdle: true
+        timeBetweenEvictionRunsMillis: 60000
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://10.1.32.69:3306/my-sell?useUnicode=true&characterEncoding=utf-8
+        username: root
+        password: root
+        validationQuery: SELECT 1 FROM DUAL
+
+# MyBatis
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   config-location: classpath:config/mybatis-config.xml
 
 #pagehelper:
 #    helper-dialect: mysql
-#      #ÊÇ·ñ×Ô¶¯¼ì²â²ÎÊý
+#      #ï¿½Ç·ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #    reasonable: false
 #    support-methods-arguments: true
 #    params: count=countSql
@@ -40,3 +56,6 @@ logging:
   level:
    com.app: debug
 
+wechat:
+  appId: 123123
+  secret: 112321312312
