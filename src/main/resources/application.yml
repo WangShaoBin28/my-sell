@@ -18,7 +18,7 @@ spring:
       expose-session-attributes: false
       expose-spring-macro-helpers: false
       suffix: .ftl
-      template-loader-path: classpath:/templates
+      template-loader-path: classpath:/templates/page
     datasource:
         connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
         driverClassName: com.mysql.jdbc.Driver

@@ -1,6 +1,6 @@
 package com.app.entity;
 
-import com.app.utils.BaseEntity;
+import com.app.common.utils.BaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;
