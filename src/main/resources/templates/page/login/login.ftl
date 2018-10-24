@@ -38,6 +38,7 @@
 							</div>
 						</div>
 					</form>
+					<div id="message" style="color: red"></div>
 				</div>
 				<p class="copyright">Copyright 2018-2019 by WangShaoBin</p>
 			</div>
@@ -60,7 +61,9 @@
 
                 //监听提交
                 form.on('submit(login)', function (data) {
-                    layer.msg('玩命提示中');
+
+                    // layer.alert('只想简单的提示');
+                    $("#message").text("正在登入！");
                     //通过ajax请求处理登入
                     $.ajax({
                         url: "/checkLogin",
@@ -71,10 +74,13 @@
                         contentType: "application/json",
                         success: function (res) {
                             console.log(res);
+                            // layer.msg('玩命提示中');
+                            $("#message").text(res.error);
+                            // alert(res.error);
                             // window.location.href = '';
                         },
                         error: function (data) {
-                            console.log(data)
+
                         }
                     });
                     return false;

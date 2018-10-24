@@ -34,6 +34,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login() {
         //检查是否有登入，有登入直接跳转 TODO
+      //暂时把登入的ID放入cookie
 
         return "login/login";
     }
