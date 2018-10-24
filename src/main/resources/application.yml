@@ -35,7 +35,7 @@ spring:
         testWhileIdle: true
         timeBetweenEvictionRunsMillis: 60000
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://10.1.32.69:3306/my-sell?useUnicode=true&characterEncoding=utf-8
+        url: jdbc:mysql://39.107.69.124:3306/my-sell?useUnicode=true&characterEncoding=utf-8&useSSL=false
         username: root
         password: root
         validationQuery: SELECT 1 FROM DUAL

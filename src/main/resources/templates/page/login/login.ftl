@@ -68,15 +68,12 @@
                     $.ajax({
                         url: "/checkLogin",
                         method: 'POST',
-                        async: false,
                         data: JSON.stringify(data.field),
                         dataType: 'JSON',
                         contentType: "application/json",
                         success: function (res) {
-                            console.log(res);
-                            // layer.msg('玩命提示中');
+                            // console.log(res);
                             $("#message").text(res.error);
-                            // alert(res.error);
                             // window.location.href = '';
                         },
                         error: function (data) {
