@@ -16,7 +16,7 @@
 				<div class="m-login-warp">
 					<form class="layui-form">
 						<div class="layui-form-item">
-							<input type="text" name="title" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
+							<input type="text" name="phoneNumber" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
 							<input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
@@ -43,52 +43,43 @@
 			</div>
 		</div>
 		<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-		<script>
-			layui.use(['form', 'layedit', 'laydate'], function() {
-				var form = layui.form(),
-					layer = layui.layer;
+        <script>
+            layui.use(['form', 'layedit', 'laydate', 'jquery'], function () {
+                var form = layui.form(), layer = layui.layer, $ = layui.jquery;
 
-
-				//自定义验证规则
-				form.verify({
-					title: function(value) {
-						if(value.length < 5) {
-							return '标题至少得5个字符啊';
-						}
-					},
-					password: [/(.+){6,12}$/, '密码必须6到12位'],
-					verity: [/(.+){6}$/, '验证码必须是6位'],
-					
-				});
-
+                //自定义验证规则
+                form.verify({
+                    title: function (value) {
+                        if (value.length < 5) {
+                            return '标题至少得5个字符啊';
+                        }
+                    },
+                    password: [/(.+){6,12}$/, '密码必须6到12位'],
+                    verity: [/(.+){6}$/, '验证码必须是6位'],
+                });
 
                 //监听提交
                 form.on('submit(login)', function (data) {
-                    layer.alert(JSON.stringify(data.field), {
-                        title: '最终的提交信息'
+                    layer.msg('玩命提示中');
+                    //通过ajax请求处理登入
+                    $.ajax({
+                        url: "/checkLogin",
+                        method: 'POST',
+                        async: false,
+                        data: JSON.stringify(data.field),
+                        dataType: 'JSON',
+                        contentType: "application/json",
+                        success: function (res) {
+                            console.log(res);
+                            // window.location.href = '';
+                        },
+                        error: function (data) {
+                            console.log(data)
+                        }
                     });
-
-                    //     var url = "/checkLogin/" + data.field.phoneNumber + "/" + data.field.password + "/" + data.field.verity;
-                    //     //通过ajax请求处理登入
-                    //     $.ajax({
-                    //         url: url,
-                    //         method: 'get',
-                    //         data: null,
-                    //         dataType: 'JSON',
-                    //         success: function (res) {
-                    //             console.log(res);
-                    //         },
-                    //         error: function (data) {
-                    //             return false;
-                    //         }
-                    //     });
-                    //
-                    // });
                     return false;
                 });
-
-			});
-		</script>
+            });
+        </script>
 	</body>
-
 </html>
