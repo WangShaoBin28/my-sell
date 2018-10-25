@@ -37,5 +37,48 @@ public class IndexController {
         return "/index/index";
     }
 
+    @RequestMapping("/welcome")
+    public String welcome() {
+
+
+        return "/index/welcome";
+    }
+
+    /**
+     * @author wangshaobin
+     * @date 2018/10/25 15:28
+     * @description 系统设置页面
+     */
+    @RequestMapping("/system")
+    public String system() {
+
+
+        return "/system/system";
+    }
+
+    /**
+     * @author wangshaobin
+     * @date 2018/10/25 15:28
+     * @description 系统设置页面 backupDb
+     */
+    @RequestMapping("/adminInfo")
+    public String adminInfo() {
+
+
+        return "/admin/admin-info";
+    }
+
+    /**
+     * @author wangshaobin
+     * @date 2018/10/25 15:28
+     * @description 备份数据库
+     */
+    @RequestMapping("/backupDb")
+    public String backupDb() {
+
+
+        return "/backup/backupDb";
+    }
+
 
 }

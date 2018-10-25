@@ -31,8 +31,15 @@ public final class ConstCode {
     public static final Integer EXCEPTION_CODE = 207;
     public static final String EXCEPTION_MSG = "操作异常";
 
+
     /** -----------------------------登入---------------------------- */
 
+    public static final Integer NO_REGISTERED_CODE = 607;
+    public static final String NO_REGISTERED_MSG = "账号未注册";
+
+
+    public static final Integer PASSWORD_INCORRECT_CODE = 608;
+    public static final String PASSWORD_INCORRECT_MSG = "密码不正确";
 
 
 

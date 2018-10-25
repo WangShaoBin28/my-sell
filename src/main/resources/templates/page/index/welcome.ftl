@@ -6,8 +6,8 @@
   		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>网站后台管理模版</title>
-		<link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css"/>
-		<link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css"/>
+		<link rel="stylesheet" type="text/css" href="../../admin/layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../../admin/css/admin.css"/>
 	</head>
 	<body>
 		<div class="wrap-container welcome-container">
@@ -152,15 +152,15 @@
 					<div class="panel panel-default contact-panel">
 						<div class="panel-header">联系我们</div>
 						<div class="panel-body">
-							<p>QQ：1465465646</p>
-							<p>E-mail:4565564@qq.com</p>
+							<p>QQ：1418307288</p>
+							<p>E-mail:wsbsmile@163.com</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../../static/admin/lib/echarts/echarts.js"></script>
+		<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../admin/lib/echarts/echarts.js"></script>
 		<script type="text/javascript">
 			layui.use(['layer','jquery'], function(){
 				var layer 	= layui.layer;
@@ -169,7 +169,7 @@
 				var myChart;
 				require.config({
 				    paths: {
-				        echarts: '../../static/admin/lib/echarts'
+				        echarts: '../../admin/lib/echarts'
 				    }
 				});
 				require(

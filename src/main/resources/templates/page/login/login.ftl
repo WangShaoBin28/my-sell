@@ -16,7 +16,7 @@
 				<div class="m-login-warp">
 					<form class="layui-form">
 						<div class="layui-form-item">
-							<input type="text" name="phoneNumber" required lay-verify="phone" placeholder="用户名" autocomplete="off" class="layui-input">
+							<input type="text" name="phoneNumber" required lay-verify="password" placeholder="用户名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
 							<input type="password" name="password" required lay-verify="password" placeholder="密码" autocomplete="off" class="layui-input">
@@ -72,10 +72,10 @@
                         dataType: 'JSON',
                         contentType: "application/json",
                         success: function (res) {
-                            if (res.status == true) {
+                            if (res.success == true) {
                                 window.location.href = '/index';
                             } else {
-                                $("#message").text(res.error);
+                                $("#message").text(res.message);
                             }
                         },
                         error: function (data) {

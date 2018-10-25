@@ -46,13 +46,13 @@
 				    <a href="javascript:;"><i class="iconfont">&#xe60d;</i>生成静态</a>
 				  </li>
 				  <li class="layui-nav-item">
-				    <a href="javascript:;"><i class="iconfont">&#xe600;</i>备份管理</a>
+				    <a href="javascript:;" data-url="/backupDb" data-id='7'><i class="iconfont">&#xe600;</i>备份管理</a>
 				  </li>
 				  <li class="layui-nav-item">
-				    <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息"><i class="iconfont">&#xe606;</i>个人信息</a>
+				    <a href="javascript:;" data-url="/adminInfo" data-id='5' data-text="个人信息"><i class="iconfont">&#xe606;</i>个人信息</a>
 				  </li>
 				  <li class="layui-nav-item">
-				  	<a href="javascript:;" data-url="system.html" data-id='6' data-text="系统设置"><i class="iconfont">&#xe60b;</i>系统设置</a>
+				  	<a href="javascript:;" data-url="/system" data-id='6' data-text="系统设置"><i class="iconfont">&#xe60b;</i>系统设置</a>
 				  </li>
 				</ul>
 			</div>
@@ -68,9 +68,9 @@
 					<ul class="layui-nav" lay-filter="rightNav">
 					  <li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>
 					  <li class="layui-nav-item">
-					    <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息">超级管理员</a>
+					    <a href="javascript:;" data-url="/adminInfo" data-id='5' data-text="个人信息">超级管理员</a>
 					  </li>
-					  <li class="layui-nav-item"><a href="javascript:;">退出</a></li>
+					  <li class="layui-nav-item"><a href="/loginOut">退出</a></li>
 					</ul>
 				</div>
 				<!--主体内容-->
@@ -83,7 +83,7 @@
 					  <div class="layui-tab-content">
 					    <div class="layui-tab-item layui-show" style="background: #f5f5f5;">
 					    	<!--1-->
-					    	<iframe src="welcome.ftl" width="100%" height="100%" name="iframe" scrolling="auto" class="iframe" framborder="0"></iframe>
+					    	<iframe src="/welcome" width="100%" height="100%" name="iframe" scrolling="auto" class="iframe" framborder="0"></iframe>
 					    	<!--1end-->
 					    </div>
 					  </div>
@@ -95,11 +95,6 @@
 				
 			</div>
 		</div>
-		<script type="text/javascript">
-			var scope={
-				link:'./welcome.ftl'
-			}
-		</script>
 		<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../admin/js/common.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../admin/js/main.js" type="text/javascript" charset="utf-8"></script>
