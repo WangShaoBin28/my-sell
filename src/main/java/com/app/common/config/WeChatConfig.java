@@ -1,4 +1,4 @@
-package com.app.config;
+package com.app.common.config;
 
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage;

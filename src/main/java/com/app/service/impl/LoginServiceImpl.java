@@ -1,6 +1,5 @@
 package com.app.service.impl;
 
-import com.app.common.consts.ConstsCode;
 import com.app.common.utils.ErrorUtils;
 import com.app.common.utils.ReturnInfo;
 import com.app.dao.UserInfoMapper;
@@ -34,45 +33,34 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public ReturnInfo<UserInfo> checkLogin(UserInfoForm userInfoForm, HttpServletRequest request) {
-        ReturnInfo<UserInfo> returnInfo = new ReturnInfo<>();
 
         //非法参数
         if (userInfoForm == null) {
-            returnInfo.setStatus(false);
-            returnInfo.setError(ErrorUtils.ILLEGAL_ERROR);
-            return returnInfo;
+            return new ReturnInfo<>(null, 1, ErrorUtils.ILLEGAL_ERROR, false);
         }
 
         //根据手机号进行查询
         UserInfo userInfo = userInfoMapper.selectByPhoneNumber(userInfoForm);
 
         if (userInfo == null) {
-            returnInfo.setStatus(false);
-            returnInfo.setError(ErrorUtils.PHONE_NUMBER_IS_NULL_ERROR);
-            return returnInfo;
+            return new ReturnInfo<>(null, 1, ErrorUtils.PHONE_NUMBER_IS_NULL_ERROR, false);
         }
         HttpSession session = request.getSession();
         Object verityCode = session.getAttribute("verityCode");
 
         if (verityCode == null) { //验证码不存在或者过期
-            returnInfo.setStatus(false);
-            returnInfo.setError(ErrorUtils.VERITY_CODE_EXPIRED_ERROR);
-            return returnInfo;
+            return new ReturnInfo<>(null, 1, ErrorUtils.VERITY_CODE_EXPIRED_ERROR, false);
         } else if (!verityCode.equals(userInfoForm.getVerity())) { //验证码不正确
-            returnInfo.setStatus(false);
-            returnInfo.setError(ErrorUtils.INCORRECT_VERIFICATION_CODE_ERROR);
-            return returnInfo;
+            return new ReturnInfo<>(null, 1, ErrorUtils.INCORRECT_VERIFICATION_CODE_ERROR, false);
         }
 
         //判断密码是否正确
         if (userInfo.getPassword().equals(userInfoForm.getPassword())) {
-            returnInfo.setStatus(false);
-            returnInfo.setError(ErrorUtils.PASSWORD_ERROR);
-            return returnInfo;
+            return new ReturnInfo<>(null, 1, ErrorUtils.PASSWORD_ERROR, false);
         }
 
-        returnInfo.setContent(userInfo);
-
-        return returnInfo;
+        return new ReturnInfo<>(userInfo);
     }
+
+
 }

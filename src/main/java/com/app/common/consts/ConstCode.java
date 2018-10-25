@@ -3,7 +3,7 @@ package com.app.common.consts;
 /**
  * Created by Administrator on 2016/11/16 0016.
  */
-public final class ConstsCode {
+public final class ConstCode {
 
     /** -----------------------------通用部分---------------------------- */
 
@@ -30,5 +30,12 @@ public final class ConstsCode {
      */
     public static final Integer EXCEPTION_CODE = 207;
     public static final String EXCEPTION_MSG = "操作异常";
+
+    /** -----------------------------登入---------------------------- */
+
+
+
+
+
 
 }

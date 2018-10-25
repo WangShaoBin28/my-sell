@@ -1,9 +1,8 @@
 package com.app.controller;
 
-import com.app.config.WeChatProperties;
+import com.app.common.config.WeChatProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
