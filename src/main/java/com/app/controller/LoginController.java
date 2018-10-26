@@ -8,6 +8,8 @@ import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -32,6 +34,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login() {
         //检查是否有登入，有登入直接跳转 TODO
+        //暂时把登入的ID放入cookie
 
         return "login/login";
     }
@@ -41,10 +44,21 @@ public class LoginController {
      * @date 2018/10/24 16:33
      * @description 异步检查登入
      */
-    @GetMapping("/checkLogin/{phoneNumber}/{password}/{verity}")
+    @PostMapping("/checkLogin")
     @ResponseBody
-    public ReturnInfo<UserInfo> checkLogin(UserInfoForm userInfoForm, HttpServletRequest request) {
+    public ReturnInfo<UserInfo> checkLogin(@RequestBody UserInfoForm userInfoForm, HttpServletRequest request) {
         return loginService.checkLogin(userInfoForm, request);
+    }
+
+    /**
+     * @author wangshaobin
+     * @date 2018/10/24 19:41
+     * @description 退出
+     */
+    @GetMapping("/loginOut")
+    public String loginOut() {
+
+        return "redirect:/";
     }
 
 }

@@ -16,14 +16,14 @@
 				<div class="m-login-warp">
 					<form class="layui-form">
 						<div class="layui-form-item">
-							<input type="text" name="title" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
+							<input type="text" name="phoneNumber" required lay-verify="password" placeholder="用户名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
-							<input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+							<input type="password" name="password" required lay-verify="password" placeholder="密码" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
 							<div class="layui-inline">
-								<input type="text" name="verity" required lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
+								<input type="text" name="verity" required lay-verify="verity" placeholder="验证码" autocomplete="off" class="layui-input">
 							</div>
 							<div class="layui-inline">
 								<img class="verifyImg" onclick="this.src=this.src+'?c='+Math.random();" src="../../admin/images/login/yzm.jpg" />
@@ -38,57 +38,58 @@
 							</div>
 						</div>
 					</form>
+					<div id="message" style="color: red"></div>
 				</div>
 				<p class="copyright">Copyright 2018-2019 by WangShaoBin</p>
 			</div>
 		</div>
-		<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-		<script>
-			layui.use(['form', 'layedit', 'laydate'], function() {
-				var form = layui.form(),
-					layer = layui.layer;
+	  <#include "../common/js.ftl">
+        <script>
+            layui.use(['form', 'layedit', 'laydate', 'jquery'], function () {
+                var form = layui.form(), layer = layui.layer, $ = layui.jquery;
 
-
-				//自定义验证规则
-				form.verify({
-					title: function(value) {
-						if(value.length < 5) {
-							return '标题至少得5个字符啊';
-						}
-					},
-					password: [/(.+){6,12}$/, '密码必须6到12位'],
-					verity: [/(.+){6}$/, '验证码必须是6位'],
-					
-				});
-
+                //自定义验证规则
+               form.verify({
+                    password: function (value) {
+                        if (value == '') {
+                            return '请输入密码！';
+                        }
+                    },
+                    verity: function (value) {
+                        if (value == '') {
+                            return '请输入验证码！';
+                        }
+                    }
+                });
 
                 //监听提交
                 form.on('submit(login)', function (data) {
-                    layer.alert(JSON.stringify(data.field), {
-                        title: '最终的提交信息'
-                    });
+                    var phoneNumber = $("input[name='phoneNumber']").val();
+                    var password = $("input[name='password']").val();
+                    var verity = $("input[name='verity']").val();
+                    if (phoneNumber != '' && password != '' && verity != '') {
+                        $("#message").text("正在登陆！");
+                        $.ajax({
+                            url: "/checkLogin",
+                            method: 'POST',
+                            data: JSON.stringify(data.field),
+                            dataType: 'JSON',
+                            contentType: "application/json",
+                            success: function (res) {
+                                if (res.success == true) {
+                                    window.location.href = '/index';
+                                } else {
+                                    $("#message").text(res.message);
+                                }
+                            },
+                            error: function (data) {
 
-                    //     var url = "/checkLogin/" + data.field.phoneNumber + "/" + data.field.password + "/" + data.field.verity;
-                    //     //通过ajax请求处理登入
-                    //     $.ajax({
-                    //         url: url,
-                    //         method: 'get',
-                    //         data: null,
-                    //         dataType: 'JSON',
-                    //         success: function (res) {
-                    //             console.log(res);
-                    //         },
-                    //         error: function (data) {
-                    //             return false;
-                    //         }
-                    //     });
-                    //
-                    // });
+                            }
+                        });
+                    }
                     return false;
                 });
-
-			});
-		</script>
+            });
+        </script>
 	</body>
-
 </html>

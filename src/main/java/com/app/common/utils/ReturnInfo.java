@@ -1,43 +1,82 @@
 package com.app.common.utils;
 
-public class ReturnInfo<T> {
 
-    private boolean status = true;
+import com.app.common.consts.ConstCode;
 
-    private String error;
+/**
+ * JSONResult : Response JSONResult for RESTful,封装返回JSON格式的数据
+ */
+public class ReturnInfo<T> extends Result {
 
-    private T content;
+    private static final long serialVersionUID = 7880907731807860636L;
 
-    public boolean getStatus() {
-        return status;
+    /**
+     * 数据
+     */
+    private T data;
+
+
+    public T getData() {
+        return data;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setData(T data) {
+        this.data = data;
     }
 
-    public String getError() {
-        return error;
+    public ReturnInfo() {
+        super();
     }
 
-    public void setError(String error) {
-        this.error = error;
+    /**
+     * 自定义返回结果
+     * @param data 数据
+     * @param statusCode
+     * @param message
+     * @param success
+     */
+    public ReturnInfo(T data, Integer statusCode, String message, boolean success){
+        this.data = data;
+        super.setStatusCode(statusCode);
+        super.setMessage(message);
+        super.setSuccess(success);
     }
 
-    public T getContent() {
-        return content;
+    /**
+     * 自定义返回结果
+     * @pata 数据
+     * @param data
+     * @param succes
+     */
+    public ReturnInfo(T data, boolean succes){
+        this.data = data;
+        super.setSuccess(succes);
+        super.setStatusCode(!succes ? ConstCode.EXCEPTION_CODE : ConstCode.SUCCESS_CODE);
+        super.setMessage(!succes ? ConstCode.EXCEPTION_MSG : ConstCode.SUCCESS_MSG);
     }
 
-    public void setContent(T content) {
-        this.content = content;
+    /**
+     * 成功返回数据和消息
+     *
+     * @param data
+     * @param message
+     */
+    public ReturnInfo(T data, String message) {
+        this.data = data;
+        super.setSuccess(true);
+        super.setMessage(message);
+        super.setStatusCode(ConstCode.SUCCESS_CODE);
     }
 
-    @Override
-    public String toString() {
-        return "ReturnInfo{" +
-                "status=" + status +
-                ", error='" + error + '\'' +
-                ", content=" + content +
-                '}';
+    /**
+     * 成功返回数据
+     *
+     * @param data
+     */
+    public ReturnInfo(T data) {
+        this.data = data;
+        super.setSuccess(true);
+        super.setMessage(ConstCode.SUCCESS_MSG);
+        super.setStatusCode(ConstCode.SUCCESS_CODE);
     }
 }
