@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>后台登录</title>
+		<title>WMA系统登录</title>
 		<link rel="stylesheet" type="text/css" href="../../admin/layui/css/layui.css" />
 		<link rel="stylesheet" type="text/css" href="../../admin/css/login.css" />
 	</head>
@@ -12,7 +12,7 @@
 	<body>
 		<div class="m-login-bg">
 			<div class="m-login">
-				<h3>后台系统登录</h3>
+				<h3>WMA系统登录</h3>
 				<div class="m-login-warp">
 					<form class="layui-form">
 						<div class="layui-form-item">
