@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<meta name="renderer" content="webkit">
-  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>网站后台管理模版</title>
-		<link rel="stylesheet" type="text/css" href="../../admin/layui/css/layui.css"/>
-		<link rel="stylesheet" type="text/css" href="../../admin/css/admin.css"/>
+       <#include "../common/css.ftl">
 	</head>
 	<body>
 		<div class="wrap-container welcome-container">
@@ -93,7 +87,7 @@
 						<div class="panel-body">
 							<div class="commentbox">
 								<ul class="commentList">
-								  <li class="item cl"> <a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
+								  <li class="item cl"><a href="#"><i class="avatar size-L radius"><img alt="" src="http://static.h-ui.net/h-ui/images/ucnter/avatar-default.jpg"></i></a>
 								    <div class="comment-main">
 								      <header class="comment-header">
 								        <div class="comment-meta"><a class="comment-author" href="#">慕枫</a> 评论于
@@ -144,7 +138,6 @@
 								</ul>
 							</div>
 							<div id="pagesbox" style="text-align: center;padding-top: 5px;">
-								
 							</div>
 						</div>
 					</div>
@@ -159,8 +152,7 @@
 				</div>
 			</div>
 		</div>
-		<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../../admin/lib/echarts/echarts.js"></script>
+	   <#include "../common/js.ftl">
 		<script type="text/javascript">
 			layui.use(['layer','jquery'], function(){
 				var layer 	= layui.layer;
@@ -185,7 +177,7 @@
 				        myChart.setOption(
 				        	{
 						     title: {
-						        text: "数据统计",
+						        text: "营业额数据统计",
 						        textStyle: {
 						            color: "rgb(85, 85, 85)",
 						            fontSize: 18,
@@ -197,8 +189,8 @@
 						        trigger: "axis"
 						    },
 						    legend: {
-						        data: ["会员", "文章", "评论"],
-						        selectedMode: false,
+						        data: ["下单数量", "金额数量", "评论"],
+						        selectedMode: false
 						    },
 						    toolbox: {
 						        show: true,
@@ -241,7 +233,7 @@
 						    },
 						    series: [
 						        {
-						            name: "会员",
+						            name: "下单数量",
 						            type: "line",
 						            smooth: true,
 						            itemStyle: {
@@ -254,7 +246,7 @@
 						            data: [10, 12, 21, 54, 260, 830, 710]
 						        },
 						        {
-						            name: "文章",
+						            name: "金额数量",
 						            type: "line",
 						            smooth: true,
 						            itemStyle: {

@@ -1,0 +1,5 @@
+<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../admin/js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../admin/js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../admin/lib/echarts/echarts.js"></script>

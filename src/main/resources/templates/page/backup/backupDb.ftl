@@ -32,7 +32,7 @@
         </div>
     </div>
 </div>
-<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+  <#include "../common/js.ftl">
 <script>
     //Demo
     layui.use(['form','element'], function(){

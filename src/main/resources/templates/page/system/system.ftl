@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
-		<meta charset="UTF-8">
-		<meta name="renderer" content="webkit">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>网站后台管理模版</title>
-		<link rel="stylesheet" type="text/css" href="../../admin/layui/css/layui.css" />
-		<link rel="stylesheet" type="text/css" href="../../admin/css/admin.css" />
+	<#include "../common/css.ftl">
 	</head>
-
 	<body>
 		<div class="layui-tab page-content-wrap">
 			<ul class="layui-tab-title">
@@ -184,7 +176,7 @@
 				</div>
 			</div>
 		</div>
-		<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	  <#include "../common/js.ftl">
 		<script>
 			//Demo
 			layui.use(['form', 'element'], function() {

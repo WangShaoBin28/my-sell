@@ -43,13 +43,13 @@
 				<p class="copyright">Copyright 2018-2019 by WangShaoBin</p>
 			</div>
 		</div>
-		<script src="../../admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	  <#include "../common/js.ftl">
         <script>
             layui.use(['form', 'layedit', 'laydate', 'jquery'], function () {
                 var form = layui.form(), layer = layui.layer, $ = layui.jquery;
 
                 //自定义验证规则
-                form.verify({
+               form.verify({
                     password: function (value) {
                         if (value == '') {
                             return '请输入密码！';
@@ -64,24 +64,29 @@
 
                 //监听提交
                 form.on('submit(login)', function (data) {
-                    $("#message").text("正在登陆！");
-                    $.ajax({
-                        url: "/checkLogin",
-                        method: 'POST',
-                        data: JSON.stringify(data.field),
-                        dataType: 'JSON',
-                        contentType: "application/json",
-                        success: function (res) {
-                            if (res.success == true) {
-                                window.location.href = '/index';
-                            } else {
-                                $("#message").text(res.message);
-                            }
-                        },
-                        error: function (data) {
+                    var phoneNumber = $("input[name='phoneNumber']").val();
+                    var password = $("input[name='password']").val();
+                    var verity = $("input[name='verity']").val();
+                    if (phoneNumber != '' && password != '' && verity != '') {
+                        $("#message").text("正在登陆！");
+                        $.ajax({
+                            url: "/checkLogin",
+                            method: 'POST',
+                            data: JSON.stringify(data.field),
+                            dataType: 'JSON',
+                            contentType: "application/json",
+                            success: function (res) {
+                                if (res.success == true) {
+                                    window.location.href = '/index';
+                                } else {
+                                    $("#message").text(res.message);
+                                }
+                            },
+                            error: function (data) {
 
-                        }
-                    });
+                            }
+                        });
+                    }
                     return false;
                 });
             });
