@@ -1,8 +1,11 @@
 package com.app.controller;
 
 import com.app.common.config.WeChatProperties;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Version 1.0
  * @Description: index页面
  **/
+@Api("管理基础功能")
 @Controller
 public class IndexController {
 
@@ -24,20 +28,21 @@ public class IndexController {
      * @date 2018/10/24 19:45
      * @description 页面跳转不做任何操作
      */
-    @RequestMapping("/")
+    @ApiOperation("页面跳转不做任何操作")
+    @GetMapping("/")
     public String main() {
         return "redirect:/login";
     }
 
 
-    @RequestMapping("/index")
+    @GetMapping("/index")
     public String index() {
         // TODO 获取菜单 返回前台进行展示
 
         return "/index/index";
     }
 
-    @RequestMapping("/welcome")
+    @GetMapping("/welcome")
     public String welcome() {
 
 
@@ -49,7 +54,7 @@ public class IndexController {
      * @date 2018/10/25 15:28
      * @description 系统设置页面
      */
-    @RequestMapping("/system")
+    @GetMapping("/system")
     public String system() {
 
 
@@ -61,7 +66,7 @@ public class IndexController {
      * @date 2018/10/25 15:28
      * @description 系统设置页面 backupDb
      */
-    @RequestMapping("/adminInfo")
+    @GetMapping("/adminInfo")
     public String adminInfo() {
 
 
@@ -73,7 +78,7 @@ public class IndexController {
      * @date 2018/10/25 15:28
      * @description 备份数据库
      */
-    @RequestMapping("/backupDb")
+    @GetMapping("/backupDb")
     public String backupDb() {
 
 
