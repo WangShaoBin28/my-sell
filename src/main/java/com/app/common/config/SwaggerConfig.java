@@ -28,24 +28,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 @Slf4j
-public class SwaggerConfig implements EnvironmentAware {
-
-    private Environment environment;
-
-    @Override
-    public void setEnvironment(Environment environment) {
-        this.environment = environment;
-    }
-
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("swagger-ui.html")
-//                .addResourceLocations("classpath:/META-INF/resources/");
-//
-////        registry.addResourceHandler("/webjars/**")
-////                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-//        super.addResourceHandlers(registry);
-//    }
+public class SwaggerConfig {
 
     @Bean
     public Docket docket() {
