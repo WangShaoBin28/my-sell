@@ -28,6 +28,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
             @Override
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
                 log.debug("处理请求前......");
+                //利用拦截器进行对账号登入的验证
+
                 return true;
             }
 

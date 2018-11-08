@@ -22,7 +22,7 @@ public class MenuController {
     @RequestMapping("/afterMenu")
     public String afterMenu() {
 
-        return "/menu/afterMenu.ftl";
+        return "menu/afterMenu";
     }
 
     /**
@@ -33,7 +33,7 @@ public class MenuController {
     @RequestMapping("/beforeMenu")
     public String beforeMenu() {
 
-        return "/menu/beforeMenu.ftl";
+        return "menu/beforeMenu";
     }
 
 
